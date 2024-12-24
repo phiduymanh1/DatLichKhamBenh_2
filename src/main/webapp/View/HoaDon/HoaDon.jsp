@@ -40,9 +40,71 @@
 <%--        <article class="col-sm-8 bg-info p-5">Main content</article>--%>
 <%--    </section>--%>
     <section>
-<%----%><br><br><br><br><br>
-    <a href="/View/HoaDon/HoaDonDetail.jsp"><button type="button" class="btn btn-success">Thêm hóa đơn</button></a>
-    <br><br><br>
+        <form action="/hoadon/add" method="post">
+            <fieldset>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Mã Hóa Đơn</label>
+                    <input type="text" id="disabledTextInput" class="form-control" name="maHd" value="${hd.maHd}">
+                </div>
+                <div class="mb-3">
+                    <label for="disabledSelect" class="form-label">Bác Sĩ</label>
+                    <select id="disabledSelect" class="form-select" name="maBs">
+                        <c:forEach items="${listbs}" var="bs">
+                            <option value="${bs.maBs}" ${bs.maBs == hd.maBs ? 'SELECTED' : ''}>${bs.tenBs}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="benhNhan" class="form-label">Bệnh nhân</label>
+                    <select id="benhNhan" class="form-select" name="maBn">
+                        <c:forEach items="${listbn}" var="bn">
+                            <option value="${bn.maBn}" ${bn.maBn == hd.maBn ? 'SELECTED' : ''}>${bn.tenBn}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div>
+                    <label class="form-label">Ngày khám</label>
+                    <input class="form-control" type="date" name="ngayKham" id="ngayKham" value="${hd.ngayKham}">
+                </div>
+                <div>
+                    <label class="form-label">Tổng tiền</label>
+                    <input class="form-control" type="number" name="tongTien" id="tongTien" value="${hd.tongTien}">
+                </div>
+                <div>
+                    <label class="form-label">Tiền cần thanh toán</label>
+                    <input class="form-control" type="number" name="thanhToan" id="thanhToan" value="${hd.thanhToan}">
+                </div>
+                <div>
+                    <label class="form-label">Tiền thừa</label>
+                    <input class="form-control" type="number" name="tienThua" id="tienThua" value="${hd.tienThua}">
+                </div>
+                <div>
+                    <label class="form-label">Trạng thái</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="trangThai" id="trangThai" value="Đã Thanh Toán" ${hd.trangThai == "Đã Thanh Toán" ? "checked" : ""}>
+                        <label class="form-check-label" for="trangThai" >
+                            Đã thanh toán
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="trangThai" id="trangThaiChua" value="Chưa Thanh Toán"  ${hd.trangThai == "Chưa Thanh Toán" ? "checked" : ""}>
+                        <label class="form-check-label" for="trangThaiChua" >
+                            Chưa thanh toán
+                        </label>
+                    </div>
+                </div>
+                <br><br>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
+                        <label class="form-check-label" for="disabledFieldsetCheck">
+                            Xác nhận tạo hóa đơn
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </fieldset>
+        </form>
         <table class="table">
             <thead>
             <tr>
@@ -53,6 +115,7 @@
                 <th scope="col">Ngày Khám</th>
                 <th scope="col">Tổng Tiền</th>
                 <th scope="col">Thanh Toán</th>
+                <th scope="col">Tiền Thừa</th>
                 <th scope="col">Trạng Thái</th>
             </tr>
             </thead>
@@ -66,6 +129,7 @@
                         <td>${hd.ngayKham}</td>
                         <td>${hd.tongTien}</td>
                         <td>${hd.thanhToan}</td>
+                        <td>${hd.tienThua}</td>
                         <td>${hd.trangThai}</td>
                         <td>
                             <a href="/hoadon/detail?maHoaDon=${hd.maHd}"><button type="button" class="btn btn-primary">Detail</button></a>

@@ -4,12 +4,13 @@ package com.example.datlichkhambenh_test.Services;
 
 import java.util.List;
 
-public interface Icomon<T>{
+public interface Icomon<T , A>{
     List<T> getAll();
 
-    void addOrUpdate(T object);
+    void Add(A object);
+    void Update(T object);
 
     T getOne(String ma);
 
-    void delete(T object);
+    void delete(A object);
 }

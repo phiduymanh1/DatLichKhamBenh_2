@@ -1,5 +1,7 @@
 package com.example.datlichkhambenh_test.Request;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -11,7 +13,9 @@ import java.sql.Date;
 @NoArgsConstructor
 @Builder
 @ToString
+
 public class HoaDonRequest {
+
     private String maHd;
 
     private Date ngayKham;

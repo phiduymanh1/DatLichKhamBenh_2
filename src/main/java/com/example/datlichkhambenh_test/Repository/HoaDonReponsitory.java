@@ -27,7 +27,18 @@ public class HoaDonReponsitory {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
+    } public void update(HoaDonEntity hoaDon){
+        try {
+            session.getTransaction().begin();
+            session.update(hoaDon);
+            session.getTransaction().commit();
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
     }
+
+
     public void delete(HoaDonEntity hoaDon){
         try {
             session.getTransaction().begin();
