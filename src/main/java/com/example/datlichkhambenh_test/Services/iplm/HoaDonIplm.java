@@ -11,10 +11,10 @@ import com.example.datlichkhambenh_test.Repository.HoaDonReponsitory;
 import com.example.datlichkhambenh_test.Request.HoaDonRequest;
 import com.example.datlichkhambenh_test.Response.HoaDonResponse;
 import com.example.datlichkhambenh_test.Services.Icomon;
-import com.example.datlichkhambenh_test.Ultils.Hibernate;
+
 import lombok.SneakyThrows;
 import org.apache.commons.beanutils.BeanUtils;
-import org.hibernate.Session;
+
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -33,6 +33,7 @@ public class HoaDonIplm implements Icomon<HoaDonResponse , HoaDonRequest> {
     public void Add(HoaDonRequest object) {
         hoaDonReponsitory.addOrUpdate(converHoaDonFromRequest(object));
     }
+
 //    @SneakyThrows
 //    @Override
     //    public void Update(HoaDonResponse object) {
@@ -48,6 +49,7 @@ public class HoaDonIplm implements Icomon<HoaDonResponse , HoaDonRequest> {
         // Gọi phương thức update trong HoaDonRepository
         hoaDonReponsitory.update(hoaDonEntity);  // Cập nhật hóa đơn
     }
+
 
     @SneakyThrows
     public HoaDonEntity converHoaDonFromRequest(HoaDonRequest hoaDonRequest){
@@ -74,6 +76,7 @@ public class HoaDonIplm implements Icomon<HoaDonResponse , HoaDonRequest> {
     public void delete(String ma) {
 //        HoaDonEntity hoaDon = hoaDonReponsitory.getOne(ma);
         hoaDonReponsitory.delete(ma);
+
     }
 
 }

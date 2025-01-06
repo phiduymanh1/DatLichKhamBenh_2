@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class DichVuKhamIplm implements Icomon<DichVuKhamResponse , DichVuKhamRequest > {
+
+
     DichVuKhamRepository dichVuKhamRepository = new DichVuKhamRepository();
     @Override
     public List<DichVuKhamResponse> getAll() {
@@ -36,7 +39,9 @@ public class DichVuKhamIplm implements Icomon<DichVuKhamResponse , DichVuKhamReq
         DichVuKhamEntity dichVuKhamEntity = new DichVuKhamEntity();
         BeanUtils.copyProperties(dichVuKhamEntity,dichVuKhamRequest);
         return dichVuKhamEntity;
+
     }
+
 
 
     @Override
@@ -49,5 +54,6 @@ public class DichVuKhamIplm implements Icomon<DichVuKhamResponse , DichVuKhamReq
     @Override
     public void delete(String ma) {
         dichVuKhamRepository.delete(ma);
+
     }
 }

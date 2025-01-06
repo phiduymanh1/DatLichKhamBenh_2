@@ -29,6 +29,7 @@ public class HoaDonReponsitory {
             e.printStackTrace();
         }
     } public void update(HoaDonEntity hoaDon){
+
         try {
             session.getTransaction().begin();
             session.merge(hoaDon);
@@ -38,6 +39,9 @@ public class HoaDonReponsitory {
             e.printStackTrace();
         }
     }
+
+
+
 
 
     public void delete(String maHd){

@@ -6,7 +6,9 @@ import com.example.datlichkhambenh_test.Entity.BenhNhanEntity;
 import com.example.datlichkhambenh_test.Entity.HoaDonEntity;
 import com.example.datlichkhambenh_test.Repository.BacSiRepository;
 import com.example.datlichkhambenh_test.Repository.BenhNhanRepository;
+
 import com.example.datlichkhambenh_test.Repository.HoaDonReponsitory;
+
 import com.example.datlichkhambenh_test.Request.HoaDonRequest;
 import com.example.datlichkhambenh_test.Response.HoaDonResponse;
 import com.example.datlichkhambenh_test.Services.iplm.HoaDonIplm;
@@ -42,12 +44,14 @@ public class HoaDonServlet extends HttpServlet {
         }
     }
 
+
     @SneakyThrows
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String maHd = request.getParameter("maHoaDon");
 //        HoaDonEntity hoaDon = new HoaDonReponsitory().getOne(maHd);
         new HoaDonReponsitory().delete(maHd);
         load(request, response);
+
     }
 
     private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
