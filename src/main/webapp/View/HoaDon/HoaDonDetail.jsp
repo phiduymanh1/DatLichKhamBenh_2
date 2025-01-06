@@ -40,25 +40,25 @@
   <%--        <article class="col-sm-8 bg-info p-5">Main content</article>--%>
   <%--    </section>--%>
   <section>
-    <form action="/hoadon/add" method="post">
+    <form action="/hoadon/update" method="post">
       <fieldset>
         <div class="mb-3">
           <label for="disabledTextInput" class="form-label">Mã Hóa Đơn</label>
-          <input type="text" id="disabledTextInput" class="form-control" name="maHoaDon" value="${hd.maHd}">
+          <input type="text" id="disabledTextInput" class="form-control" name="maHd" value="${hd.maHd}">
         </div>
         <div class="mb-3">
           <label for="disabledSelect" class="form-label">Bác Sĩ</label>
-          <select id="disabledSelect" class="form-select" name="bacSiId">
+          <select id="disabledSelect" class="form-select" name="maBs">
             <c:forEach items="${listbs}" var="bs">
-              <option value="${bs.maBs}" ${bs.maBs == hd.bacSi.maBs ? 'SELECTED' : ''}>${bs.tenBs}</option>
+              <option value="${bs.maBs}" ${bs.maBs == hd.maBs ? 'SELECTED' : ''}>${bs.tenBs}</option>
             </c:forEach>
           </select>
         </div>
         <div class="mb-3">
           <label for="benhNhan" class="form-label">Bệnh nhân</label>
-          <select id="benhNhan" class="form-select" name="benhNhan">
+          <select id="benhNhan" class="form-select" name="maBn">
             <c:forEach items="${listbn}" var="bn">
-              <option value="${bn.maBn}" ${bn.maBn == hd.benhNhan.maBn ? 'SELECTED' : ''}>${bn.tenBn}</option>
+              <option value="${bn.maBn}" ${bn.maBn == hd.maBn ? 'SELECTED' : ''}>${bn.tenBn}</option>
             </c:forEach>
           </select>
         </div>
@@ -72,7 +72,7 @@
         </div>
         <div>
           <label class="form-label">Tiền cần thanh toán</label>
-          <input class="form-control" type="number" name="tienThanhToan" id="tienThanhToan" value="${hd.thanhToan}">
+          <input class="form-control" type="number" name="thanhToan" id="thanhToan" value="${hd.thanhToan}">
         </div>
         <div>
           <label class="form-label">Tiền thừa</label>
@@ -102,7 +102,8 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+<%--        <button type="submit" class="btn btn-primary">Add</button>--%>
+        <button type="submit" class="btn btn-primary">Update</button>
       </fieldset>
     </form>
   </section>

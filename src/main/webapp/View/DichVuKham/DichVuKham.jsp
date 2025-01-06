@@ -40,15 +40,15 @@
   <%--        <article class="col-sm-8 bg-info p-5">Main content</article>--%>
   <%--    </section>--%>
   <section>
-    <form action="" method="post">
+    <form action="/dichVuKham/add" method="post">
       <fieldset>
         <div class="mb-3">
           <label for="disabledTextInput" class="form-label">Mã Dịch Vụ Khám</label>
-          <input type="text" id="disabledTextInput" class="form-control" name="maDichVuKham" >
+          <input type="text" id="disabledTextInput" class="form-control" name="maDvk" >
         </div>
         <div>
           <label class="form-label">Tên Dịch Vụ Khám</label>
-          <input class="form-control" type="text" name="tenDichVuKham" id="tenDichVuKham">
+          <input class="form-control" type="text" name="tenDvk" id="tenDvk">
         </div>
         <div>
           <label class="form-label">Mô tả</label> <br>
@@ -83,8 +83,8 @@
           <td>${dvk.moTa}</td>
           <td>${dvk.giaTien}</td>
           <td>
-            <button type="button" class="btn btn-primary">Detail</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <a href="/dichVuKham/detail?maDvk=${dvk.maDvk}"><button type="button" class="btn btn-primary">Detail</button></a>
+            <a href="/dichVuKham/delete?maDvk=${dvk.maDvk}"><button type="button" class="btn btn-danger">Delete</button></a>
           </td>
         </tr>
       </c:forEach>

@@ -22,20 +22,31 @@ public class DichVuKhamRepository {
     public DichVuKhamEntity getOne(String ma){
         return session.find(DichVuKhamEntity.class,ma);
     }
-    public void addOrUpdate(DichVuKhamEntity hoaDon){
+    public void Add(DichVuKhamEntity dichVuKham){
         try {
             session.getTransaction().begin();
-            session.saveOrUpdate(hoaDon);
+            session.persist(dichVuKham);
             session.getTransaction().commit();
         }catch (Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
         }
     }
-    public void delete(DichVuKhamEntity hoaDon){
+    public void update(DichVuKhamEntity dichVuKham){
         try {
             session.getTransaction().begin();
-            session.delete(hoaDon);
+            session.merge(dichVuKham);
+            session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
+    public void delete(String ma){
+        try {
+            session.getTransaction().begin();
+            DichVuKhamEntity dichVuKham = session.get(DichVuKhamEntity.class,ma);
+            session.delete(dichVuKham);
             session.getTransaction().commit();
         }catch (Exception e){
             session.getTransaction().rollback();
