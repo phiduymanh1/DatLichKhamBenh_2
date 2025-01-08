@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "BacSiServlet", value = {"/BacSi/load", "/BacSi/detail", "/BacSi/add"})
+@WebServlet(name = "BacSiServlet", value = {"/BacSi/load", "/BacSi/detail", "/BacSi/add" , "/BacSi/404"})
 public class BacSiServlet extends HttpServlet {
     BacSiRepository repoBacSi = new BacSiRepository();
     List<BacSiEntity> listBS = new ArrayList<>();
@@ -32,6 +32,8 @@ public class BacSiServlet extends HttpServlet {
         String uri = request.getRequestURI();
         if (uri.contains("add")) {
             this.add(request, response);
+        } else if (uri.equals("/BacSi/404")) {
+            System.out.println("Loi 404");
         }
     }
 
@@ -54,5 +56,8 @@ public class BacSiServlet extends HttpServlet {
         BeanUtils.populate(bs, request.getParameterMap());
         repoBacSi.addOrUpdate(bs);
         this.getAll(request, response);
+
     }
+    // abc xyz
+
 }
